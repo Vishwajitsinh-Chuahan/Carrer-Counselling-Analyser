@@ -2,7 +2,7 @@
 $servername="localhost";
 $username="root";
 $password="";
-$dbname="analysis";
+$dbname="sgp2";
 
 $conn=mysqli_connect($servername,$username,$password,$dbname);//sql query
 

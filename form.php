@@ -65,7 +65,7 @@ if(!(isset($_SESSION['logedin']))|| $_SESSION['logedin']!=true)
 
     <div class="navbar">
         <button type="button" name="nav" id="nav" onclick="logout()" class="btn btn-secondary">Log Out</button>
-        <button type="button" name="nav" id="nav" onclick="display()" class="btn btn-secondary">Display</button>
+        <button type="button" name="nav" id="nav" onclick="display()" class="btn btn-secondary">View</button>
         <div class="user-icon">
     <i class="fas fa-user">
     <?php 

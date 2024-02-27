@@ -33,7 +33,7 @@ session_start();
  
          h2 {
              text-align: center;
-             color: #22045a;
+             color: #260562;
              margin-top: 20px;
              font-family: cursive;
          }
@@ -43,7 +43,7 @@ session_start();
              display: block;
             font-family:cursive;
              margin: 10px 0 5px; /* Adjusted margin */
-             color: #110c59;
+             color: #010106;
          }
  
          input {

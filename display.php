@@ -232,6 +232,8 @@ echo '<div style="font-family: Arial, sans-serif; background-color: #f9f9f9; pad
         echo "<tr>";
         echo "<td style='padding: 10px;'><strong>Career Choice : </strong>" . ($row["interest"] != null ? $row["interest"] : "NA") . "</td>";
         echo"</tr>";
+        echo "<td  class='button' style='padding: 10px; margin-bottom:10px'><a href='editacadamicinfo.php?id=$row[student_id]'>Edit</a>";
+
         echo "</table>";
 
     }
@@ -377,8 +379,9 @@ echo '<div style="font-family: Arial, sans-serif; background-color: #f9f9f9; pad
             echo "<td style='padding: 10px 5px;'><strong>Title:</strong> " . ($row2["project"] != null ? $row2["project"] : "NA") . "</td>";
             echo "<td style='padding: 10px 5px;'><strong>Used technology :</strong> " . ($row2["tech"] != null ? $row2["tech"] : "NA") . "</td>";
             echo "</tr>";
-        }
-        
+        }                
+        echo "<td class='button' style='padding: 10px; margin-bottom:10px'><a href='editcourses.php?id=$student_id'>Edit</a></td>";
+
         echo "</table>"; // Close table
         // if any variable is null the print  NA insteasd of null
 

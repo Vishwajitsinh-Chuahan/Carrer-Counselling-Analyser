@@ -434,7 +434,6 @@ echo '<div style="font-family: Arial, sans-serif; background-color: #f9f9f9; pad
          
         echo "</table>"; // Close table
         // if any variable is null the print  NA insteasd of null
-
     }
     ?>
 </body>

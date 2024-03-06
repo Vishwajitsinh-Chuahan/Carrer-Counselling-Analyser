@@ -245,7 +245,7 @@ if ($result->num_rows == 1) {
                            
                             <td>
                                 <div class="form-group mb-0 mt-2">
-                                    <button type="button" class="remove-btn btn btn-danger">Remove</button>
+                                    <button type="submit" name="remove" value="<?php echo $row1['sr_no']; ?>" class="remove-btn btn btn-danger">Remove</button>
                                 </div>
                             </td>
                             <td>
@@ -328,7 +328,7 @@ if ($result->num_rows == 1) {
                            
                             <td>
                                 <div class="form-group mb-0 mt-2">
-                                    <button type="button" class="remove-btn btn btn-danger">Remove</button>
+                                   <button type="submit" name="remove1" value="<?php echo $row1['sr_no']; ?>" class="remove-btn btn btn-danger">Remove</button>             
                                 </div>
                             </td>
                             <td>
@@ -410,7 +410,7 @@ if ($result->num_rows == 1) {
                            
                             <td>
                                 <div class="form-group mb-0 mt-2">
-                                    <button type="button" class="remove-btn btn btn-danger">Remove</button>
+                                   <button type="submit" name="remove2" value="<?php echo $row1['sr_no']; ?>" class="remove-btn btn btn-danger">Remove</button>    
                                 </div>
                             </td>
                             <td>
@@ -431,32 +431,6 @@ if ($result->num_rows == 1) {
 
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-
-<script>
-    $(document).ready(function () {
-        // Add Nptel Form
-        $(document).on('click', '.add-nptel-form', function () {
-            addNptelForm();
-        });
-
-        // Add Professional Form
-        $(document).on('click', '.add-prof-form', function () {
-            addProfForm();
-        });
-
-        // Remove Row
-        $(document).on('click', '.remove-btn', function () {
-            $(this).closest('tr').remove();
-        });
-
-        // Update Button
-        $(document).on('click', '.update-btn', function () {
-            // $(this).closest('form').submit();
-        });
-
-    });
-</script>
 
 </div>
 </div>
@@ -544,6 +518,41 @@ if(isset($_POST['update'])) {
         } else {
             echo "Undefined array key at index $i";
         }
+    }
+}
+    else if(isset($_POST['remove'])) {
+    $sr_no = mysqli_real_escape_string($conn, $_POST['remove']);
+    $query = "DELETE FROM codechef WHERE sr_no = '$sr_no'";
+    $query_run = mysqli_query($conn, $query);
+
+    if($query_run) {
+        echo "<script>alert('Remove Successfully.'); setTimeout(function(){ window.location.href = 'fdisplay.php'; },0);</script>";
+    } else {
+        echo "<script>alert('Error in Removing records.');</script>";
+    }
+}
+
+else if(isset($_POST['remove1'])) {
+    $sr_no = mysqli_real_escape_string($conn, $_POST['remove1']);
+    $query = "DELETE FROM hackerrank WHERE sr_no = '$sr_no'";
+    $query_run = mysqli_query($conn, $query);
+
+    if($query_run) {
+        echo "<script>alert('Remove Successfully.'); setTimeout(function(){ window.location.href = 'fdisplay.php'; },0);</script>";
+    } else {
+        echo "<script>alert('Error in Removing records.');</script>";
+    }
+}
+
+else if(isset($_POST['remove2'])) {
+    $sr_no = mysqli_real_escape_string($conn, $_POST['remove2']);
+    $query = "DELETE FROM leetcode WHERE sr_no = '$sr_no'";
+    $query_run = mysqli_query($conn, $query);
+
+    if($query_run) {
+        echo "<script>alert('Remove Successfully.'); setTimeout(function(){ window.location.href = 'fdisplay.php'; },0);</script>";
+    } else {
+        echo "<script>alert('Error in Removing records.');</script>";
     }
 }
 ?>

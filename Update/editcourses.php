@@ -251,7 +251,7 @@ if ($result->num_rows == 1) {
                            
                             <td>
                                 <div class="form-group mb-0 mt-2">
-                                    <button type="button" class="remove-btn btn btn-danger">Remove</button>
+                                 <button type="submit" name="remove" value="<?php echo $row1['sr_no']; ?>" class="remove-btn btn btn-danger">Remove</button>    
                                 </div>
                             </td>
                             <td>
@@ -315,7 +315,7 @@ if ($result->num_rows == 1) {
                            
                             <td>
                                 <div class="form-group mb-0 mt-2">
-                                    <button type="button" class="remove-btn btn btn-danger">Remove</button>
+                                    <button type="submit" name="remove1" value="<?php echo $row2['sr_no']; ?>" class="remove-btn btn btn-danger">Remove</button>    
                                 </div>
                             </td>
                             <td>
@@ -377,7 +377,7 @@ if ($result->num_rows == 1) {
                            
                             <td>
                                 <div class="form-group mb-0 mt-2">
-                                    <button type="button" class="remove-btn btn btn-danger">Remove</button>
+                                    <button type="submit" name="remove2" value="<?php echo $row2['sr_no']; ?>" class="remove-btn btn btn-danger">Remove</button>                                        
                                 </div>
                             </td>
                             <td>
@@ -459,47 +459,6 @@ if ($result->num_rows == 1) {
 </div>
 <div class="paste-new-forms-prof"></div>
 
-<script>
-    $(document).ready(function () {
-        // Add Nptel Form
-        $(document).on('click', '.add-nptel-form', function () {
-            addNptelForm();
-        });
-
-        // Add Professional Form
-        $(document).on('click', '.add-prof-form', function () {
-            addProfForm();
-        });
-
-        // Remove Row
-        $(document).on('click', '.remove-btn', function () {
-            $(this).closest('tr').remove();
-        });
-
-        // Update Button
-        $(document).on('click', '.update-btn', function () {
-            // $(this).closest('form').submit();
-        });
-
-        // function addNptelForm() {
-        //     var newRow = $('<tr></tr>');
-        //     newRow.append('<td><div class="form-group mb-2 mt-2"><input type="text" name="nptelcourses[]" class="form-control text-center" required placeholder="Enter course"></div></td>');
-        //     newRow.append('<td><div class="form-group mb-2 mt-2"><input type="number" name="nscore[]" class="form-control text-center" placeholder="Enter score"></div></td>');
-        //     newRow.append('<td><div class="form-group mb-0 mt-2"><button type="button" class="remove-btn btn btn-danger">Remove</button></div></td>');
-        //     newRow.append('<td><div class="form-group mb-0 mt-2"><button type="button" class="update-btn btn btn-success">Update</button></div></td>');
-        //     $('#nptel-table tbody').append(newRow);
-        // }
-
-        // function addProfForm() {
-        //     var newRow = $('<tr></tr>');
-        //     newRow.append('<td><div class="form-group mb-2 mt-2"><input type="text" name="course[]" class="form-control text-center" required placeholder="Enter course"></div></td>');
-        //     newRow.append('<td><div class="form-group mb-2 mt-2"><input type="number" name="result[]" class="form-control text-center" placeholder="Enter result"></div></td>');
-        //     newRow.append('<td><div class="form-group mb-0 mt-2"><button type="button" class="remove-btn btn btn-danger">Remove</button></div></td>');
-        //     newRow.append('<td><div class="form-group mb-0 mt-2"><button type="button" class="update-btn btn btn-success">Update</button></div></td>');
-        //     $('#prof-table tbody').append(newRow);
-        // }
-    });
-</script>
 
 </div>
 </div>
@@ -608,6 +567,41 @@ else if(isset($_POST['update3'])) {
             echo "Undefined array key at index $i";
         }
     }
-
 }
+    else if(isset($_POST['remove'])) {
+    $sr_no = mysqli_real_escape_string($conn, $_POST['remove']);
+    $query = "DELETE FROM nptel WHERE sr_no = '$sr_no'";
+    $query_run = mysqli_query($conn, $query);
+
+    if($query_run) {
+        echo "<script>alert('Remove Successfully.'); setTimeout(function(){ window.location.href = 'fdisplay.php'; },0);</script>";
+    } else {
+        echo "<script>alert('Error in Removing records.');</script>";
+    }
+}
+
+else if(isset($_POST['remove1'])) {
+    $sr_no = mysqli_real_escape_string($conn, $_POST['remove1']);
+    $query = "DELETE FROM professionalcourses WHERE sr_no = '$sr_no'";
+    $query_run = mysqli_query($conn, $query);
+
+    if($query_run) {
+        echo "<script>alert('Remove Successfully.'); setTimeout(function(){ window.location.href = 'fdisplay.php'; },0);</script>";
+    } else {
+        echo "<script>alert('Error in Removing records.');</script>";
+    }
+}
+
+else if(isset($_POST['remove2'])) {
+    $sr_no = mysqli_real_escape_string($conn, $_POST['remove2']);
+    $query = "DELETE FROM research WHERE sr_no = '$sr_no'";
+    $query_run = mysqli_query($conn, $query);
+
+    if($query_run) {
+        echo "<script>alert('Remove Successfully.'); setTimeout(function(){ window.location.href = 'fdisplay.php'; },0);</script>";
+    } else {
+        echo "<script>alert('Error in Removing records.');</script>";
+    }
+}
+
 ?>

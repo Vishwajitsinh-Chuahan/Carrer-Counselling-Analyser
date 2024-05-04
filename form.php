@@ -14,49 +14,59 @@ if(!(isset($_SESSION['logedin']))|| $_SESSION['logedin']!=true)
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-6o7k3k9v2NJGB8b1K4d2uplZHZ/w7kO2e2H3UUyEXNXc3sBexQ4j2LYo9z6CfvmY8mjPFC9VNNpgGzB22yOIHw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="nav.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+   
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
     <title>Career Counselling Form - Career Counselling Analyzer</title>
     
 <style>
   body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color:antiquewhite;
+    background-color:#d7ebfa;
 
   }
+
+ 
+
+  
 
   .navbar {
-    /* background: linear-gradient(to bottom right, #5f9ea0, #49767b); */
-    background: linear-gradient(to bottom right, #5f9ea0,#30757a,#5f9ea0);
-
-  }
-
-   #nav{
-    margin-left: 20px;
-    background-color: #ccc;
-    color:black;
-    font-family: cursive;
-    font-weight: bold;
-    text-decoration: none;   
+  background: #2c3e50; /* Dark blue color */
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
-  .navbar .icon {
-    float: right;
-    font-size: 20px;
-    margin-right: 15px;
-  }
+.navbar button {
+  margin-right: 10px;
+  border: none;
+  background: transparent;
+  color: #fff; /* White color */
+  font-size: 16px;
+  cursor: pointer;
+  transition: color 0.3s ease; /* Smooth color transition */
+}
 
-  .user-icon {
-    border-radius: 50%;
-    background-color: #ccc;
-    width: 40px;
-    height: 40px;
-    text-align: center;
-    line-height: 40px;
-    font-size: 20px;
-    color: #333;
-    float: right;
-    margin-right: 10px;
-  }
+.navbar button:hover {
+  color: #fff; /* Change color on hover */
+}
+
+.user-icon {
+  border-radius: 50%;
+  background-color:azure; /* Dark blue color */
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  font-size: 20px;
+  color: #2c3e50; /* White color */
+  float: right;
+  margin-right: 10px;
+}
 </style>
 </head>
 <body>
@@ -115,7 +125,7 @@ if ($result->num_rows == 1) {
         <div class="col-md-12">
             <div class="card mt-4">
            
-            <div class="card-header" style="color:white; background: linear-gradient(to bottom right, #5f9ea0,#30757a,#49767b); display: flex; justify-content: space-between; align-items: center;">
+            <div class="card-header" style="color:white; background: #2c3e50; display: flex; justify-content: space-between; align-items: center;">
     <h4 class="text-center" style="margin: 0; flex-grow: 1;">Personal Information</h4>
 </div>
 
@@ -140,7 +150,7 @@ if ($result->num_rows == 1) {
                         <div class="col-md-4">
                             <div class="form-group mb-2">
                                 <label for=""  style="font-weight: bold;">Contact Number:</label>
-                                <input type="tel" name="contactnumber" class="form-control" placeholder="" >
+                                <input type="tel" name="contactnumber" class="form-control" placeholder="" required >
                             </div>
                         </div>
                         
@@ -229,7 +239,7 @@ if ($result->num_rows == 1) {
 <div class="container" >
         <div class="col-md-12 ">
             <div class="card mt-4">
-                <div class="card-header" style="color:white; background: linear-gradient(to bottom right, #5f9ea0,#30757a,#49767b);" >
+                <div class="card-header" style="color:white; background: #2c3e50;" >
                     <h4 class="text-center"4>Academic Information</h4>
                 </div>
                 <div class="card-body">
@@ -353,8 +363,8 @@ if ($result->num_rows == 1) {
 <div class="container" >
       <div class="col-md-12 ">
             <div class="card mt-4">
-                <div class="card-header" style="color:white; background: linear-gradient(to bottom right, #5f9ea0,#30757a,#49767b);" >
-                    <h4 class="text-center">Career option</h4>
+                <div class="card-header" style="color:white; background: #2c3e50;" >
+                    <h4 class="text-center">Career options</h4>
                 </div>
        
                 <div class="card-body">
@@ -383,7 +393,7 @@ if ($result->num_rows == 1) {
 <div class="container">
         <div class="col-md-12">
             <div class="card mt-4">
-                <div class="card-header" style="background: linear-gradient(to bottom right, #5f9ea0,#30757a,#49767b); color:white;" >
+                <div class="card-header" style="background: #2c3e50; color:white;" >
                 <h4 class="text-center">Technical Profile</h4>
                 </div>
                 <div class="card-body">
@@ -432,7 +442,7 @@ if ($result->num_rows == 1) {
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group mb-2">
-                                        <label for=""  style="font-weight: bold;">Problem Solved:</label>
+                                        <label for=""  style="font-weight: bold;">Problems Solved:</label>
                                         <input type="text" name="hnumber[]" class="form-control" placeholder="Number of problems solved">
                                     </div>
                                 </div>
@@ -460,13 +470,14 @@ if ($result->num_rows == 1) {
                                     <div class="col-md-3">
                                         <div class="form-group mb-2">
                                         <label for=""  style="font-weight: bold;">Languages:</label>
-                                            <select name="clanguages[]" class="form-select">
+                                            <select name="hlanguages[]" class="form-select">
                                             <option value="" disabled selected>Select</option>   
                                             <option value="C">C</option>
                                             <option value="C++">C++</option>
                                             <option value="Java">Java</option>
                                             <option value="Python">Python</option>
-                                        </select>    </div>
+                                        </select>
+                                        </div>
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group mb-2">
@@ -482,7 +493,7 @@ if ($result->num_rows == 1) {
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group mb-2">
-                                            <label for=""  style="font-weight: bold;">Problem Solved:</label>
+                                            <label for=""  style="font-weight: bold;">Problems Solved:</label>
                                             <input type="text" name="cnumber[]" class="form-control" placeholder="Number of problems solved">
                                         </div>
                                     </div>
@@ -511,7 +522,7 @@ if ($result->num_rows == 1) {
                                     <div class="col-md-3">
                                         <div class="form-group mb-2">
                                         <label for=""  style="font-weight: bold;">Languages:</label>
-                                            <select name="languages[]" class="form-select">
+                                            <select name="hlanguages[]" class="form-select">
                                             <option value="" disabled selected>Select</option>   
                                             <option value="C">C</option>
                                             <option value="C++">C++</option>
@@ -534,7 +545,7 @@ if ($result->num_rows == 1) {
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group mb-2">
-                                            <label for=""  style="font-weight: bold;">Problem Solved:</label>
+                                            <label for=""  style="font-weight: bold;">Problems Solved:</label>
                                             <input type="text" name="lnumber[]" class="form-control" placeholder="Number of problems solved">
                                         </div>
                                     </div>
@@ -552,34 +563,81 @@ if ($result->num_rows == 1) {
 
                         <br>
                         <div class="row">
+        <div class="main-form mt-2">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group mb-2">
+                        <label for="" style="font-weight: bold;">Nptel Courses:</label>
+                        <select name="nptelcourses[]" class="form-control js-example-basic-single" placeholder="Search for a course">
+                            <option value="Design and Analysis of Algorithms">Design and Analysis of Algorithms</option>
+                            <option value="An Introduction to Programming through C++">An Introduction to Programming through C++</option>
+                            <option value="Computer Architecture">Computer Architecture</option>
+                            <option value="Computer Organization and Architecture">Computer Organization and Architecture</option>
+                            <option value="Data Structures and Algorithms Using Java">Data Structures and Algorithms Using Java</option>
+                            <option value="Operating Systems">Operating Systems</option>
+                            <option value="Introduction to Problem Solving and Programming">Introduction to Problem Solving and Programming</option>
+                            <option value="Introduction to Programming in C">Introduction to Programming in C</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group mb-2">
+                        <label for="" style="font-weight: bold;">Score:</label>
+                        <input type="number" name="nscore[]" class="form-control" placeholder="Enter score">
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="form-group mb-2">
+                        <br>
+                        <a href="javascript:void(0)" class="add-nptel-form float-end btn btn-primary">ADD</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="paste-new-forms-nptel"></div>
+    <script>
+  $(document).ready(function() {
+    // Access the existing select element
+    const originalSelect = $('select[name="nptelcourses[]"]');
 
-                            <div class="main-form mt-2">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group mb-2">
-                                            <label for="" style="font-weight: bold;">Nptel Courses:</label>
-                                            <input type="text" name="nptelcourses[]" class="form-control" placeholder="Enter course name">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="form-group mb-2">
-                                            <label for="" style="font-weight: bold;">Score:</label>
-                                            <input type="number" name="nscore[]" class="form-control" placeholder="Enter score">
-                                        </div>
-                                    </div>
-                                   
-                                    <div class="col-md-1">
-                                        <div class="form-group mb-2">
-                                            <br>
-                                            <a href="javascript:void(0)" class="add-nptel-form float-end btn btn-primary">ADD</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="paste-new-forms-nptel"></div>
+    // Create a new select element for the search bar
+    const searchBar = $('<select class="form-control js-example-basic-single" placeholder="Search for a course">');
 
+    // Populate the search bar with existing options from the original select
+    searchBar.append(originalSelect.find('option').clone());
 
+    // Replace the original select with the search bar (important!)
+    originalSelect.replaceWith(searchBar);
+
+    // Initialize Select2 with custom searching functionality
+    $('.js-example-basic-single').select2({
+      minimumInputLength: 0, // Allow searching with an empty input box
+      templateResult: function(data) { // Customizes how options are displayed
+        if (data.loading) {
+          return data.text; // Display "Loading..." during search
+        }
+        return data.text || data.id; // Display course name or ID if name is unavailable
+      },
+      ajax: {
+        url: function(params) {
+          // Replace with your actual API endpoint or filtering logic
+          // This example searches for courses containing the search term
+          return `/api/search-courses?q=${params.term}`;
+        },
+        dataType: 'json',
+        processResults: function(data) {
+          return {
+            results: data.map(course => {
+              return { id: course.id, text: course.name };
+            })
+          };
+        },
+        cache: true
+      }
+    });
+  });
+</script>
 
                         <div class="row">
 
@@ -710,106 +768,93 @@ if ($result->num_rows == 1) {
                     });
                     
                     function addHackerRankForm() {
-    $('.paste-new-forms-hackerrank').append('<div class="row">\
-        <div class="col-md-3">\
-            <div class="form-group mb-2">\
-                <select name="hlanguages[]" class="form-select"><option value="" disabled selected>Select</option><option value="C">C</option><option value="C++">C++</option><option value="Java">Java</option><option value="Python">Python</option></select>\
-            </div>\
-        </div>\
-        <div class="col-md-2">\
-            <div class="form-group mb-2">\
-                <input type="text" name="hrank[]" class="form-control" placeholder="Enter Rank">\
-            </div>\
-        </div>\
-        <div class="col-md-2">\
-            <div class="form-group mb-2">\
-                <input type="text" name="hpoint[]" class="form-control" placeholder="Enter Points">\
-            </div>\
-        </div>\
-        <div class="col-md-3">\
-            <div class="form-group mb-2">\
-                <input type="text" name="hnumber[]" class="form-control" placeholder="Number of problems solved">\
-            </div>\
-        </div>\
-        <div class="col-md-2">\
-            <div class="form-group mb-2">\
+                $('.paste-new-forms-hackerrank').append('<div class="row">\
+                <div class="col-md-3 ">\
+                    <div class="form-group mb-2">\
+                        <input type="text" name="hlanguages[]" class="form-control" required placeholder="Enter language">\
+                        </div>\
+                </div>\
+                <div class="col-md-2">\
+                    <div class="form-group mb-2">\
+                        <input type="text" name="hrank[]" class="form-control" placeholder="Enter Rank">\
+                    </div>\
+                </div>\
+                <div class="col-md-2">\
+                    <div class="form-group mb-2">\
+                    <input type="text" name="hpoint[]" class="form-control" placeholder="Enter Points">\
+                    </div>\
+                </div>\
+                <div class="col-md-3">\
+                    <div class="form-group mb-2">\
+                        <input type="text" name="hnumber[]" class="form-control" placeholder="Number of problems solved">\
+                        </div>\
+                        </div>\
+                <div class="col-md-2">\
+                <div class="form-group mb-2">\
                 <button type="button" class="remove-btn btn btn-danger">Remove</button>\
-            </div>\
-        </div>\
-    </div>');
-  }
-  
-  function addCodeChefForm() {
-    $('.paste-new-forms-codechef').append('<div class="row">\
-        <div class="col-md-3">\
-            <div class="form-group mb-2">\
-                <select name="clanguages[]" class="form-select" required>\
-                    <option value="" disabled selected>Select Language</option>\
-                    <option value="C">C</option>\
-                    <option value="C++">C++</option>\
-                    <option value="Java">Java</option>\
-                    <option value="Python">Python</option>\
-                </select>\
-            </div>\
-        </div>\
-        <div class="col-md-2">\
-            <div class="form-group mb-2">\
-                <input type="text" name="crank[]" class="form-control" placeholder="Enter Rank">\
-            </div>\
-        </div>\
-        <div class="col-md-2">\
-            <div class="form-group mb-2">\
-                <input type="text" name="cpoint[]" class="form-control" placeholder="Enter Points">\
-            </div>\
-        </div>\
-        <div class="col-md-3">\
-            <div class="form-group mb-2">\
-                <input type="text" name="cnumber[]" class="form-control" placeholder="Number of problems solved">\
-            </div>\
-        </div>\
-        <div class="col-md-2">\
-            <div class="form-group mb-2">\
-                <button type="button" class="remove-btn btn btn-danger">Remove</button>\
-            </div>\
-        </div>\
-    </div>');
-  }
-  
-  function addLeetCodeForm() {
-    $('.paste-new-forms-leetcode').append('<div class="row">\
-        <div class="col-md-3">\
-            <div class="form-group mb-2">\
-                <select name="languages[]" class="form-select" required>\
-                    <option value="" disabled selected>Select Language</option>\
-                    <option value="C">C</option>\
-                    <option value="C++">C++</option>\
-                    <option value="Java">Java</option>\
-                    <option value="Python">Python</option>\
-                </select>\
-            </div>\
-        </div>\
-        <div class="col-md-2">\
-            <div class="form-group mb-2">\
-                <input type="text" name="lrank[]" class="form-control" placeholder="Enter Rank">\
-            </div>\
-        </div>\
-        <div class="col-md-2">\
-            <div class="form-group mb-2">\
-                <input type="text" name="lpoint[]" class="form-control" placeholder="Enter Points">\
-            </div>\
-        </div>\
-        <div class="col-md-3">\
-            <div class="form-group mb-2">\
+                </div>\
+                </div>\
+                </div>');
+              }
+        function addCodeChefForm() {
+          $('.paste-new-forms-codechef').append('<div class="row">\
+                <div class="col-md-3 ">\
+                <div class="form-group mb-2">\
+                    <input type="text" name="clanguages[]" class="form-control" required placeholder="Enter language">\
+                    </div>\
+                    </div>\
+                    <div class="col-md-2">\
+                    <div class="form-group mb-2">\
+                    <input type="text" name="crank[]" class="form-control" placeholder="Enter Rank">\
+                    </div>\
+                    </div>\
+                    <div class="col-md-2">\
+                    <div class="form-group mb-2">\
+                    <input type="text" name="cpoint[]" class="form-control" placeholder="Enter Points">\
+                    </div>\
+                    </div>\
+                    <div class="col-md-3">\
+                    <div class="form-group mb-2">\
+                    <input type="text" name="cnumber[]" class="form-control" placeholder="Number of problems solved">\
+                    </div>\
+                    </div>\
+                    <div class="col-md-2">\
+                    <div class="form-group mb-2">\
+                    <button type="button" class="remove-btn btn btn-danger">Remove</button>\
+                    </div>\
+                    </div>\
+                    </div>');
+                  }
+                  
+        function addLeetCodeForm() {
+          $('.paste-new-forms-leetcode').append('<div class="row">\
+                <div class="col-md-3 ">\
+                    <div class="form-group mb-2">\
+                    <input type="text" name="languages[]" class="form-control" required placeholder="Enter language">\
+                    </div>\
+                    </div>\
+                    <div class="col-md-2">\
+                    <div class="form-group mb-2">\
+                    <input type="text" name="lrank[]" class="form-control" placeholder="Enter Rank">\
+                    </div>\
+                    </div>\
+                    <div class="col-md-2">\
+                    <div class="form-group mb-2">\
+                    <input type="text" name="lpoint[]" class="form-control" placeholder="Enter Points">\
+                    </div>\
+                    </div>\
+                <div class="col-md-3">\
+                <div class="form-group mb-2">\
                 <input type="text" name="lnumber[]" class="form-control" placeholder="Number of problems solved">\
-            </div>\
-        </div>\
-        <div class="col-md-2">\
-            <div class="form-group mb-2">\
+                </div>\
+                </div>\
+                <div class="col-md-2">\
+                <div class="form-group mb-2">\
                 <button type="button" class="remove-btn btn btn-danger">Remove</button>\
-            </div>\
-        </div>\
-    </div>');
-  }
+                </div>\
+                </div>\
+                </div>');
+        }
         
 
         function addNptelForm() {
@@ -878,10 +923,10 @@ if ($result->num_rows == 1) {
         });
       </script>
 
-<div class="container">
+<div class="container mb-3">
   <div class="col-md-12">
     <div class="card mt-4">
-      <div class="card-header" style="color:white; background: linear-gradient(to bottom right, #5f9ea0,#30757a,#49767b);">
+      <div class="card-header" style="color:white; background: #2c3e50;">
                             
       <h4 class="text-center">Technology Stand</h4>
                             
@@ -893,7 +938,7 @@ if ($result->num_rows == 1) {
                                   
                                   <div class="col-md-3 ">
                                             <div class="form-group mb-2">
-                                                <label for="" style="font-weight: bold;">Competavtive
+                                                <label for="" style="font-weight: bold;">Competitive
                                                   Programming:</label>
                                                 <select class="form-select" aria-label="Default select example"
                                                 name="cp" required>
@@ -991,7 +1036,7 @@ if ($result->num_rows == 1) {
                                     <div class="row">
                                         <div class="col-md-3">
                                             <div class="form-group mb-2">
-                                              <label for="" style="font-weight: bold;">Prefered Technology:</label>
+                                              <label for="" style="font-weight: bold;">Preferred Technology:</label>
                                               <input type="text" name="prefer" class="form-control"
                                               placeholder="Write your prefered technology" required>
                                             </div>

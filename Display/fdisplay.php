@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!(isset($_SESSION['logedin'])) || $_SESSION['logedin'] != true) {
-    header('Location: index.php');
+    header('Location: login.php');
     exit(); // Exit to prevent further execution
 } else {
     include('connection.php');
@@ -28,17 +28,24 @@ if(!(isset($_SESSION['logedin'])) || $_SESSION['logedin'] != true) {
     <title>Document</title>
     
     <style>
+        body {
+            margin: 0;
+            font-family:Arial, Helvetica, sans-serif;
+        }
 
- .navbar {
+
+        .navbar {
   background: #2c3e50; /* Dark blue color */
   padding: 10px;
+  height:37px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  height:40px;
 }
 
 .navbar button {
-  margin-right: 10px;
+  margin-top: 4px;  
+  margin-right: 660px;
   border: none;
+  height:30px;
   background: transparent;
   color: #fff; /* White color */
   font-size: 16px;
@@ -47,7 +54,8 @@ if(!(isset($_SESSION['logedin'])) || $_SESSION['logedin'] != true) {
 }
 
 .navbar button:hover {
-  color: #fff; /* Change color on hover */
+  background-color: grey;
+  border-radius: 2px;
 }
 
 .user-icon {
@@ -67,7 +75,7 @@ if(!(isset($_SESSION['logedin'])) || $_SESSION['logedin'] != true) {
 .button {
   display: inline-block;
   padding: 10px 20px; /* Adjust padding as needed */
-  background: linear-gradient( 30deg,#5f9ea0,#30757a,#49767b); /* Green background color */
+  background: #435787; /* Green background color */
   color: white;
   text-align: center;
   text-decoration: none;
@@ -87,7 +95,7 @@ if(!(isset($_SESSION['logedin'])) || $_SESSION['logedin'] != true) {
 
 /* Hover effect */
 .button:hover {
-  background-color: blue; /* Darker green on hover */
+  background-color: grey; /* Darker green on hover */
 }
 
 /* Active effect */
@@ -99,13 +107,12 @@ if(!(isset($_SESSION['logedin'])) || $_SESSION['logedin'] != true) {
     </style>
 </head>
 <body>
-    <div class="navbar">
-        
-    <button type="button" name="nav" id="nav" onclick="logout()" class="btn btn-secondary">Log Out</button>
+<div class="navbar">
+        <button type="button" name="nav" id="nav" onclick="logout()" class="btn btn-secondary">Log Out</button>
         <button type="button" name="nav" id="nav" onclick="form1()" class="btn btn-secondary">Form</button>
         <div class="user-icon">
-    <i class="fas fa-user">
-            <?php
+    <i class="fas fa-user"></i>
+                <?php
             include('connection.php');
 
             // Sanitize session data to prevent SQL injection
@@ -139,7 +146,7 @@ if(!(isset($_SESSION['logedin'])) || $_SESSION['logedin'] != true) {
             window.location.href = "logout.php";
         }
         function form1() {
-            
+            console.log('hi');
             window.location.href = "form.php";
         }
     </script>
@@ -174,15 +181,16 @@ $research=mysqli_query($conn, $sql7);
 $num = mysqli_num_rows($result);
 
 // Start styling the output
-echo '<div style="font-family: Arial, sans-serif; background-color: #f9f9f9; padding: 0px; border-radius: 10px;  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">';
+
+    echo '<div style="margin-top:-15px;background-color: #e3f1fa; padding: 0px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">';
     // Output data of each row
     while ($row = $result->fetch_assoc()) {
         // Display student data
-        echo "<center><h2 style='color: blue;'>Student Information</h2></center>";
-        echo '<table style="width:100%; border-collapse: collapse; margin-bottom: 20px; border: 2px solid #ddd;">'; // Start table
+       echo "<h2 style='color: #2c3e50; margin-top: 20px; text-align: center;'>Student Information</h2>";
+        echo '<table style="width:100%; border-collapse: collapse;  border: 2px solid #ddd;">'; // Start table
 
         // Grouping details in one row
-        echo "<tr style='background: linear-gradient(to bottom right, #5f9ea0,#30757a,#49767b);color : white'>";
+        echo "<tr style='background: #2c3e50;color : white'>";
 
         echo "<td colspan='10' style='padding: 10px'><strong>Personal Details</strong></td>";
         
@@ -206,17 +214,17 @@ echo '<div style="font-family: Arial, sans-serif; background-color: #f9f9f9; pad
         echo "<td style='padding: 10px;'><strong>Current Semester : </strong>" . ($row["currentsemester"] != null ? $row["currentsemester"] : "-") . "</td>";
         echo "</tr>";
         
-        echo "<td class='button' style='padding: 10px; margin-bottom:10px '><a href='editpersonalinfo.php?id=$row[student_id]'>Edit</a>";
+        echo "<td class='button' style='padding: 10px; margin-bottom:15px '><a href='editpersonalinfo.php?id=$row[student_id]'>Edit</a>";
         echo "</table>"; // Close table
         
-        echo "<table style='width:100%; border-collapse: collapse; margin-bottom: 20px; border: 1px solid #ddd;'>";   
-        echo "<tr style='background: linear-gradient(to bottom right, #5f9ea0,#30757a,#49767b);color : white'>";
+        echo "<table style='width:100%; border-collapse: collapse; border: 1px solid #ddd;'>";   
+        echo "<tr style='background: #2c3e50;color : white'>";
         
         echo "<td colspan='10' style='padding: 10px;'><strong>Academic Details</strong></td>";
         echo "</tr>";
         
         echo "<tr>";
-            echo "<td style='padding: 10px; font-size:20px; color : green'><strong>Semester wise CGPA</strong></td> ";
+            echo "<td style='padding: 10px; font-size:20px; color : #2020cf'><strong>Semester wise CGPA</strong></td> ";
         echo "</tr>";   
         
         echo "<tr>";
@@ -235,7 +243,7 @@ echo '<div style="font-family: Arial, sans-serif; background-color: #f9f9f9; pad
         echo "</tr>";
         
         echo "<tr>";
-            echo "<td style='padding: 10px; font-size:20px; color : green'><strong>Year wise CGPA</strong></td> ";
+            echo "<td style='padding: 10px; font-size:20px; color : #2020cf'><strong>Year wise CGPA</strong></td> ";
             echo "</tr>";   
 
         echo "<tr>";
@@ -248,13 +256,13 @@ echo '<div style="font-family: Arial, sans-serif; background-color: #f9f9f9; pad
 
         
         echo "<tr>";
-            echo "<td style='padding: 10px; font-size:20px; color : green'><strong>Career Option</strong></td> ";
+            echo "<td style='padding: 10px; font-size:20px; color : #2020cf'><strong>Career Option</strong></td> ";
         echo "</tr>";   
 
         echo "<tr>";
         echo "<td style='padding: 10px;'><strong>Career Choice : </strong>" . ($row["interest"] != null ? $row["interest"] : "NA") . "</td>";
         echo"</tr>";
-        echo "<td  class='button' style='padding: 10px; margin-bottom:10px'><a href='editacadamicinfo.php?id=$row[student_id]'>Edit</a>";
+        echo "<td  class='button' style='padding: 10px; margin-bottom:15px'><a href='editacadamicinfo.php?id=$row[student_id]'>Edit</a>";
         echo "</table>";
 
     }
@@ -263,12 +271,12 @@ echo '<div style="font-family: Arial, sans-serif; background-color: #f9f9f9; pad
             echo '<table style="width:100%; border-collapse: collapse; margin-bottom: 20px; border: 2px solid #ddd;">'; // Start table
     
             // Grouping details in one row
-            echo "<tr style='background: linear-gradient(to bottom right, #5f9ea0,#30757a,#49767b);color : white'>";
-            echo "<td colspan='10' style='background: linear-gradient(to bottom right, #5f9ea0,#30757a,#49767b); padding: 10px'><strong>Technology stand</strong></td>";
+            echo "<tr style='background: #2c3e50;color : white'>";
+            echo "<td colspan='10' style='background: #2c3e50; padding: 10px'><strong>Technology stand</strong></td>";
     
             // Personal Details
             echo "<tr>";
-            echo "<td style='padding: 10px;font-size:20px; color : green'><strong>* Score out of 5 </strong></td> ";
+            echo "<td style='padding: 10px;font-size:20px; color : #2020cf'><strong>* Score out of 5 </strong></td> ";
             echo "</tr>";
             echo "<tr>";
             echo "<td style='padding: 10px;'><strong>Competative Programming : </strong>" . ($row1["cp"] != null ? $row1["cp"] : "NA") . "</td>";
@@ -287,7 +295,7 @@ echo '<div style="font-family: Arial, sans-serif; background-color: #f9f9f9; pad
             echo "<td style='padding: 10px;'><strong>Prefered Technology : </strong>" . ($row1["prefer"] != null ? $row1["prefer"] : "NA") . "</td>";
             echo "</tr>";
     
-            echo "<td class='button' style='padding: 10px; margin-bottom:10px'><a href='editechnologystand.php?id=$student_id'>Edit</a></td>";
+            echo "<td class='button' style='padding: 10px; margin-bottom:15px'><a href='editechnologystand.php?id=$student_id'>Edit</a></td>";
            
 
     
@@ -298,15 +306,12 @@ echo '<div style="font-family: Arial, sans-serif; background-color: #f9f9f9; pad
         echo '<table style="width:100%; border-collapse: collapse;  border: 2px solid #ddd;">'; // Start tabl
 
         // Grouping details in one row
-        echo "<tr style='background: linear-gradient(to bottom right, #5f9ea0,#30757a,#49767b);color : white'>";
+        echo "<tr style='background: #2c3e50;color : white'>";
         echo "<td colspan='10' style='padding: 10px'><strong>Technical Details</strong></td>";
         echo "</tr>";
-        echo '<tr>';
-        echo "<td class='button' style='padding: 10px; margin-bottom:10px; margin-top:10px '><a href='addcoding.php?id=$student_id'>ADD</a></td>";
-       echo '</tr>';
         
         echo "<tr>";
-        echo "<td colspan='2' style='padding: 10px; font-size:20px; color: green'><strong>Codechecf Details</strong></td>";
+        echo "<td colspan='2' style='padding: 10px; font-size:20px; color: #2020cf;'><strong>Codechef Details</strong></td>";
         echo "</tr>";
         
         while ($row1 = $codechef->fetch_assoc()) {
@@ -319,16 +324,16 @@ echo '<div style="font-family: Arial, sans-serif; background-color: #f9f9f9; pad
             echo "</tr>";
         }
         
-        // echo "</table>"; // Close table
+        echo "</table>"; // Close table
           
-        echo '<table style="width:100%; border-collapse: collapse;  border: 2px solid #ddd;">'; // Start table
+        echo '<table style="width:100%; border-collapse: collapse;">'; // Start table
         
         // Grouping details in one row
         // echo "<tr style='background: linear-gradient(to bottom right, #5f9ea0,#30757a,#49767b);color : white'>";   
         // echo "<td colspan='10' style='padding: 10px'><strong>HackerRank Details</strong></td>";
         // echo "</tr>";
         echo "<tr>";
-        echo "<td colspan='2' style='padding: 10px; font-size:20px; color: green'><strong>Hackerrank Details</strong></td>";
+        echo "<td colspan='2' style='padding: 10px; font-size:20px; color: #2020cf;'><strong>Hackerrank Details</strong></td>";
         echo "</tr>";
         while ($row1 = $hackerrank->fetch_assoc()) {
             // Personal Details
@@ -341,19 +346,19 @@ echo '<div style="font-family: Arial, sans-serif; background-color: #f9f9f9; pad
             echo "</tr>";
         }
         
-        // echo "</table>"; // Close table
+        echo "</table>"; // Close table
         
     
         echo '<table style="width:100%; border-collapse: collapse; border: 2px solid #ddd;">'; // Start table
 
         // Grouping details in one row
-        echo "<tr style='background-color: #f0f0f0;'>";
+        echo "<tr style='background-color: blue;'>";
         // echo "<tr style='background: linear-gradient(to bottom right, #5f9ea0,#30757a,#49767b);color : white'>";
 
         // echo "<td colspan='10' style='padding: 10px'><strong>Leetcode Details</strong></td>";
         // echo "</tr>";
         echo "<tr>";
-        echo "<td colspan='2' style='padding: 10px; font-size:20px; margin-bottom: 20px; color: green'><strong>Leetcode Details</strong></td>";
+        echo "<td colspan='2' style='padding: 10px; font-size:20px; margin-bottom: 20px; color: #2020cf;'><strong>Leetcode Details</strong></td>";
         echo "</tr>";
         while ($row1 = $leetcode->fetch_assoc()) {
             // Personal Details
@@ -364,15 +369,15 @@ echo '<div style="font-family: Arial, sans-serif; background-color: #f9f9f9; pad
             echo "<td style='padding: 10px;'><strong>Problem Solved :</strong> " . ($row1["lnumber"] != null ? $row1["lnumber"] : "NA") . "</td>";
             echo "</tr>";
         }
-        echo "<td  class='button' style='padding: 10px; margin-bottom:10px'><a href='editcodingplatform.php?id=$student_id'>Edit</a>";
+        echo "<td  class='button' style='padding: 10px; margin-bottom:15px'><a href='editcodingplatform.php?id=$student_id'>Edit</a>";
        
         echo "</table>"; // Close table
 
         
-        echo '<table style="width:100%; border-collapse: collapse; margin-bottom: 20px; margin-top: 20px;  border: 2px solid #ddd;">'; // Start table
+        echo '<table style="width:100%; border-collapse: collapse; margin-bottom: 20px; ">'; // Start table
 
         // Grouping details in one row
-        echo "<tr style='background: linear-gradient(to bottom right, #5f9ea0,#30757a,#49767b);color : white'>";
+        echo "<tr style='background: #2c3e50;color : white'>";
         echo "<td colspan='2' style='padding: 10px'><strong>Courses Details</strong></td>";
         echo "</tr>";
 
@@ -383,7 +388,7 @@ echo '<div style="font-family: Arial, sans-serif; background-color: #f9f9f9; pad
         
         // NPTEL Courses
         echo "<tr>";
-        echo "<td colspan='2' style='padding: 10px; font-size:20px; color: green'><strong>NPTEL</strong></td>";
+        echo "<td colspan='2' style='padding: 10px; font-size:20px; color: #2020cf'><strong>NPTEL</strong></td>";
         echo "</tr>";
         
         while ($row1 = $nptel->fetch_assoc()) {
@@ -396,7 +401,7 @@ echo '<div style="font-family: Arial, sans-serif; background-color: #f9f9f9; pad
         
         // Professional Courses
         echo "<tr>";
-        echo "<td colspan='2' style='padding: 10px;font-size:20px; color: green'><strong>Professional Courses</strong></td>";
+        echo "<td colspan='2' style='padding: 10px;font-size:20px; color: #2020cf'><strong>Professional Courses</strong></td>";
         echo "</tr>";
         
         
@@ -409,7 +414,7 @@ echo '<div style="font-family: Arial, sans-serif; background-color: #f9f9f9; pad
         }
 
         echo "<tr>";
-        echo "<td colspan='2' style='padding: 10px; font-size:20px; color: green'><strong>Project / Research paper</strong></td>";
+        echo "<td colspan='2' style='padding: 10px; font-size:20px; color: #2020cf'><strong>Project / Research paper</strong></td>";
         echo "</tr>";
         
         while ($row2 = $research->fetch_assoc()) {
@@ -419,11 +424,10 @@ echo '<div style="font-family: Arial, sans-serif; background-color: #f9f9f9; pad
             echo "<td style='padding: 10px 5px;'><strong>Used technology :</strong> " . ($row2["tech"] != null ? $row2["tech"] : "NA") . "</td>";
             echo "</tr>";
         }
-        echo "<td class='button' style='padding: 10px; margin-bottom:10px'><a href='editcourses.php?id=$student_id'>Edit</a></td>";
+        echo "<td class='button' style='padding: 10px; margin-bottom:15px'><a href='editcourses.php?id=$student_id'>Edit</a></td>";
          
         echo "</table>"; // Close table
         // if any variable is null the print  NA insteasd of null
-
     }
     ?>
 </body>

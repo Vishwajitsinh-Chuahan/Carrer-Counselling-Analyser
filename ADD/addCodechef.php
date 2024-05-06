@@ -4,7 +4,7 @@ include('connection.php');
 // Retrieve form data
 $language = $_POST['clanguage'];
 $rank = $_POST['crank'];
-$point = $_POST['cpoint'];
+$point = $_POST['cpoint'];   
 $number = $_POST['cnumber'];
 $id = $_POST['id'];
 
@@ -16,9 +16,9 @@ if(isset($language) && isset($rank) && isset($point) && isset($number) && isset(
     $result = mysqli_query($conn, $sql);
 
     if($result) {
-        echo "Data inserted successfully";
+        echo 1;
     } else {
-        echo "Error in inserting data";
+        echo 0;
     }
 } else {
     echo "One or more POST variables are not set";

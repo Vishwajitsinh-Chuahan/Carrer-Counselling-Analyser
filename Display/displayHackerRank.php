@@ -19,7 +19,8 @@ if(isset($_POST['displaySend'])) {
         <th scope="col">Language</th>
         <th scope="col">Rank</th>
         <th scope="col">Points</th>
-        <th scope="col">No. of Problems</th>
+        <th scope="col">No. of Solved Problems</th>
+        <th scope="col">Operations</th>
       </tr>
     </thead>';
 
@@ -31,6 +32,7 @@ if(isset($_POST['displaySend'])) {
         $rank=$row['hrank'];
         $point=$row['hpoint'];
         $number=$row['hnumber'];
+        $sr_no=$row['sr_no'];
 
         $table.=' <tr>
         <td scope="row">'.$i.'</td>
@@ -38,7 +40,12 @@ if(isset($_POST['displaySend'])) {
         <td>'.$rank.'</td>
         <td>'.$point.'</td>
         <td>'.$number.'</td>
-      </tr>';
+        <td>
+            <button type="button" class="btn btn-dark" onclick="updateHackerRank('.$sr_no.')">Update</button>
+            <button type="button" class="btn btn-danger" onclick="deleteHackerRank('.$sr_no.')">Delete</button>
+       </td>
+      
+       </tr>';
       
       $i++;
 }

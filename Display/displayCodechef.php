@@ -19,7 +19,8 @@ if(isset($_POST['displaySend'])) {
         <th scope="col">Language</th>
         <th scope="col">Rank</th>
         <th scope="col">Points</th>
-        <th scope="col">No. of Problems</th>
+        <th scope="col">No. of Solved Problems</th>
+        <th scope="col">Operations</th>
       </tr>
     </thead>';
 
@@ -31,6 +32,7 @@ if(isset($_POST['displaySend'])) {
         $rank=$row['crank'];
         $point=$row['cpoint'];
         $number=$row['cnumber'];
+        $id=$row['sr_no'];
 
         $table.=' <tr>
         <td scope="row">'.$i.'</td>
@@ -38,11 +40,17 @@ if(isset($_POST['displaySend'])) {
         <td>'.$rank.'</td>
         <td>'.$point.'</td>
         <td>'.$number.'</td>
+        <td>
+        <button type="button" class="btn btn-dark" onclick="updateCodechef('.$id.')">Update</button>
+        <button type="button" class="btn btn-danger" onclick="deleteCodechef('.$id.')">Delete</button>
+   </td>
+  
+
       </tr>';
       
       $i++;
 }
        $table.='</table>';
-       echo $table;
+       echo $table; //it not print in this page it goes to editcodingplatform.php  success:function(data,status){   in data variable
 }
 ?>

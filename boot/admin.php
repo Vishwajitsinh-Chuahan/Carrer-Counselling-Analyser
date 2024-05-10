@@ -65,7 +65,9 @@ if(!(isset($_SESSION['logedin']))|| $_SESSION['logedin']!=true)
             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 
-                <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+                <li><a class="dropdown-item" href="../logout.php">Logout</a></li>
+                <li><a class="dropdown-item" href="../changepassword.php?id=<?php echo $_SESSION['account']; ?>">Reset Password</a></li>
+
             </ul>
         </li>
     </ul>
@@ -76,17 +78,13 @@ if(!(isset($_SESSION['logedin']))|| $_SESSION['logedin']!=true)
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                            <div class="sb-sidenav-menu-heading">Core</div>
+                            
                             
                             <div class="sb-sidenav-menu-heading">Addons</div>
                             <a class="nav-link" href="charts.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Charts
-                            </a>
-                            <a class="nav-link" href="tables.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Tables
-                            </a>
+                            </a>    
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
@@ -180,13 +178,6 @@ if (!$result_students) {
     <button class="btn btn-primary" id="btnNavbarSearch" type="button" style="position: absolute; top: 0; right: 0;"><i class="fas fa-search"></i></button>
 </div> -->
 
-<form class="d-none d-md-inline-block form-inline ms-auto me-5 my-2">
-    <div class="input-group">
-        <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-        <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
-    </div>
-</form>
-
     <table>
         <thead>
             <tr>
@@ -218,7 +209,7 @@ if (!$result_students) {
                         }
                         ?>
                     </td>
-              <td><a class="view-button" href="fchat.php?id=<?php echo $row['student_id']; ?>">View</a></td>
+              <td><a class="view-button" href="view.php?id=<?php echo $row['student_id']; ?>">View</a></td>
   </tr>
             <?php endwhile; ?>
         </tbody>

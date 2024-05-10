@@ -182,7 +182,7 @@ $num = mysqli_num_rows($result);
 
 // Start styling the output
 
-    echo '<div style="margin-top:-15px;background-color: #e3f1fa; padding: 0px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">';
+    echo '<div style="margin-top:-15px;background-color: #fff; padding: 0px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">';
     // Output data of each row
     while ($row = $result->fetch_assoc()) {
         // Display student data
@@ -304,12 +304,12 @@ $num = mysqli_num_rows($result);
     
     
         echo '<table style="width:100%; border-collapse: collapse;  border: 2px solid #ddd;">'; // Start tabl
-
+        
         // Grouping details in one row
         echo "<tr style='background: #2c3e50;color : white'>";
         echo "<td colspan='10' style='padding: 10px'><strong>Technical Details</strong></td>";
         echo "</tr>";
-        
+        if ($codechef->num_rows > 0) {
         echo "<tr>";
         echo "<td colspan='2' style='padding: 10px; font-size:20px; color: #2020cf;'><strong>Codechef Details</strong></td>";
         echo "</tr>";
@@ -325,13 +325,14 @@ $num = mysqli_num_rows($result);
         }
         
         echo "</table>"; // Close table
-          
+        }  
         echo '<table style="width:100%; border-collapse: collapse;">'; // Start table
         
         // Grouping details in one row
         // echo "<tr style='background: linear-gradient(to bottom right, #5f9ea0,#30757a,#49767b);color : white'>";   
         // echo "<td colspan='10' style='padding: 10px'><strong>HackerRank Details</strong></td>";
         // echo "</tr>";
+        if ($hackerrank->num_rows > 0) {
         echo "<tr>";
         echo "<td colspan='2' style='padding: 10px; font-size:20px; color: #2020cf;'><strong>Hackerrank Details</strong></td>";
         echo "</tr>";
@@ -347,7 +348,7 @@ $num = mysqli_num_rows($result);
         }
         
         echo "</table>"; // Close table
-        
+    }
     
         echo '<table style="width:100%; border-collapse: collapse; border: 2px solid #ddd;">'; // Start table
 
@@ -357,6 +358,7 @@ $num = mysqli_num_rows($result);
 
         // echo "<td colspan='10' style='padding: 10px'><strong>Leetcode Details</strong></td>";
         // echo "</tr>";
+        if ($hackerrank->num_rows > 0) {
         echo "<tr>";
         echo "<td colspan='2' style='padding: 10px; font-size:20px; margin-bottom: 20px; color: #2020cf;'><strong>Leetcode Details</strong></td>";
         echo "</tr>";
@@ -373,19 +375,14 @@ $num = mysqli_num_rows($result);
        
         echo "</table>"; // Close table
 
-        
+    }
         echo '<table style="width:100%; border-collapse: collapse; margin-bottom: 20px; ">'; // Start table
 
         // Grouping details in one row
         echo "<tr style='background: #2c3e50;color : white'>";
         echo "<td colspan='2' style='padding: 10px'><strong>Courses Details</strong></td>";
         echo "</tr>";
-
-        echo '<tr>';
-        echo "<td class='button' style='padding: 10px; margin-bottom:10px; margin-top:10px '><a href='addcourse.php?id=$student_id'>ADD</a></td>";
-       echo '</tr>';
-       
-        
+        if ($nptel->num_rows > 0) {
         // NPTEL Courses
         echo "<tr>";
         echo "<td colspan='2' style='padding: 10px; font-size:20px; color: #2020cf'><strong>NPTEL</strong></td>";
@@ -398,8 +395,9 @@ $num = mysqli_num_rows($result);
             echo "<td style='padding: 10px 5px;'><strong>Score :</strong> " . ($row1["nscore"] != null ? $row1["nscore"] : "NA") . "</td>";
             echo "</tr>";
         }
-        
-        // Professional Courses
+    }
+    if ($professional->num_rows > 0) {
+    // Professional Courses
         echo "<tr>";
         echo "<td colspan='2' style='padding: 10px;font-size:20px; color: #2020cf'><strong>Professional Courses</strong></td>";
         echo "</tr>";
@@ -412,7 +410,8 @@ $num = mysqli_num_rows($result);
             echo "<td style='padding: 10px 5px;'><strong>Score :</strong> " . ($row2["result"] != null ? $row2["result"] : "NA") . "</td>";
             echo "</tr>";
         }
-
+    }
+    if ($professional->num_rows > 0) {
         echo "<tr>";
         echo "<td colspan='2' style='padding: 10px; font-size:20px; color: #2020cf'><strong>Project / Research paper</strong></td>";
         echo "</tr>";
@@ -424,6 +423,7 @@ $num = mysqli_num_rows($result);
             echo "<td style='padding: 10px 5px;'><strong>Used technology :</strong> " . ($row2["tech"] != null ? $row2["tech"] : "NA") . "</td>";
             echo "</tr>";
         }
+    }
         echo "<td class='button' style='padding: 10px; margin-bottom:15px'><a href='editcourses.php?id=$student_id'>Edit</a></td>";
          
         echo "</table>"; // Close table
